@@ -1,0 +1,46 @@
+version: '2'
+services:
+  php:
+    build: docker/php
+    volumes:
+      - ./myapp:/usr/src/myapp
+    working_dir: /usr/src/myapp/public
+    entrypoint: "php -S 0.0.0.0:8000" 
+    ports: 
+      - 8000:8000
+    links:
+      - db
+  composer:
+    image: composer:1.9.0
+    command: 'composer update'
+    volumes: 
+      - ./myapp:/usr/src/myapp
+    working_dir: /usr/src/myapp
+    links:
+      - php
+      
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql:cached
+      - ./docker/mysql/migrate.sql:/tmp/migrate.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: '%&UJHG%&'
+      MYSQL_DATABASE: aflo
+      MYSQL_USER: aflo
+      MYSQL_PASSWORD: aflo
+      TZ: 'Asia/Tokyo'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+       - PMA_ARBITRARY=1
+       - PMA_HOST=db
+       - PMA_USER=aflo
+       - PMA_PASSWORD=aflo
+    links:
+       - db
+    ports:
+       - 8080:80
