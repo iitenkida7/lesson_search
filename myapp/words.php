@@ -38,7 +38,6 @@ class Words
             $stn->execute([$aggregationsId, $word]);
         }
         return $this->pdo->commit();
-
     }
 
     private function searchWords(string $keyword): array
