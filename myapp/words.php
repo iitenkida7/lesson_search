@@ -12,12 +12,12 @@ class Words
         if (count($words) > 0) {
             $this->insertWords($words);
         }
-        return ;
+        return $this->searchWords($words[0]);
     }
 
     public function search(string $keyword): array
     {
-        return ['hoge', 'hage'];
+        return $this->searchWords($keyword);
     }
 
     private function splitWords(string $words): array
@@ -37,5 +37,24 @@ class Words
             $stn->execute([$aggregationsId, $word]);
         }
         return $this->pdo->commit();
+    }
+
+    private function searchWords(string $keyword): array
+    {
+        // TODO 要件は満たせて位相だけど、DISTINCT で １グループだけ検索に引っかかるように強制してしまっているので、
+        // aggregations が 複数出てくるように 拡張してあげてもいいかも。
+        $stn = $this->pdo->prepare("
+          SELECT DISTINCT word FROM words
+           WHERE aggregations_id IN (
+                  SELECT DISTINCT aggregations_id 
+                    FROM words
+                   WHERE word LIKE ? )");
+        $stn->execute([$keyword]);
+
+        $words = [];
+        foreach ($stn->fetchAll(\PDO::FETCH_ASSOC) as $value ){
+            $words[] = $value['word'];            
+        }
+        return $words;
     }
 }
