@@ -30,3 +30,7 @@ make data-insert
 
 * phpMyadmin
   - http://localhost:8080/
+
+## ER図
+
+![ER図](./erd/manual_erd.png)

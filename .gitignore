@@ -1,2 +1,6 @@
 docker/mysql/data/
 myapp/vendor/
+.DS_Store
+erd/*
+!erd/.gitkeep
+!erd/manual_erd.png

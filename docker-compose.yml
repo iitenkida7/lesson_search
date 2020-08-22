@@ -28,9 +28,9 @@ services:
       - ./docker/mysql/migrate.sql:/tmp/migrate.sql
     environment:
       MYSQL_ROOT_PASSWORD: '%&UJHG%&'
-      MYSQL_DATABASE: Search
-      MYSQL_USER: Search
-      MYSQL_PASSWORD: Search
+      MYSQL_DATABASE: search
+      MYSQL_USER: search
+      MYSQL_PASSWORD: search
       TZ: 'Asia/Tokyo'
 
   phpmyadmin:
@@ -38,9 +38,18 @@ services:
     environment:
        - PMA_ARBITRARY=1
        - PMA_HOST=db
-       - PMA_USER=Search
-       - PMA_PASSWORD=Search
+       - PMA_USER=search
+       - PMA_PASSWORD=search
     links:
        - db
     ports:
        - 8080:80
+
+  schemaspy:
+    image: schemaspy/schemaspy  
+    volumes:
+      - ./docker/SchemaSpy/schemaspy.properties:/schemaspy.properties
+      - ./docker/SchemaSpy/drivers:/drivers
+      - ./erd:/output
+    links:
+       - db
