@@ -9,6 +9,8 @@
 ```
 git clone git@github.com:iitenkida7/lesson_search.git
 
+cd lesson_search
+
 docker-compose up -d
 
 # composer install
