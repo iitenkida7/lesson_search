@@ -9,6 +9,6 @@ trait Database
     public function __construct()
     {
         // TODO Pass ベタ書きなのでdotEnv あたり使う
-        $this->pdo = new \PDO('mysql:host=db;dbname=Search', 'Search', 'Search');
+        $this->pdo = new \PDO('mysql:host=db;dbname=search', 'search', 'search');
     }
 }
