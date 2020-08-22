@@ -6,3 +6,8 @@ CREATE TABLE IF NOT EXISTS words
      aggregations_id int NOT NULL,
      word varchar(10) NOT NULL,
      FOREIGN KEY aggregations_id (aggregations_id) REFERENCES aggregations (id));
+
+/*
+データが増えてきたらこれが使えるかも。
+https://qiita.com/yaiwase/items/4eef105c95c7c1388078
+*/
