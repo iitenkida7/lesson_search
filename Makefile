@@ -12,5 +12,5 @@ data-insert:
 	curl -X POST -d 'words=女性 女 ウーマン おんな 女の人 woman female' http://localhost:8000  -o /dev/null -w '%{http_code}\n' -s
 	curl -X POST -d 'words=猫 にゃんこ にゃんにゃん cat' http://localhost:8000  -o /dev/null -w '%{http_code}\n' -s
 	curl -X POST -d 'words=犬 イヌ ドッグ 戌 dog' http://localhost:8000  -o /dev/null -w '%{http_code}\n' -s
-drd:
+erd:
 	docker-compose run --rm schemaspy
