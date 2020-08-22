@@ -1,6 +1,6 @@
 <?php
 
-namespace Aflo;
+namespace Search;
 
 trait Database
 {
@@ -8,6 +8,6 @@ trait Database
 
     public function __construct()
     {
-        $this->pdo = new \PDO('mysql:host=db;dbname=aflo', 'aflo', 'aflo');
+        $this->pdo = new \PDO('mysql:host=db;dbname=Search', 'Search', 'Search');
     }
 }

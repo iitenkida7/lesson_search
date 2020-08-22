@@ -28,9 +28,9 @@ services:
       - ./docker/mysql/migrate.sql:/tmp/migrate.sql
     environment:
       MYSQL_ROOT_PASSWORD: '%&UJHG%&'
-      MYSQL_DATABASE: aflo
-      MYSQL_USER: aflo
-      MYSQL_PASSWORD: aflo
+      MYSQL_DATABASE: Search
+      MYSQL_USER: Search
+      MYSQL_PASSWORD: Search
       TZ: 'Asia/Tokyo'
 
   phpmyadmin:
@@ -38,8 +38,8 @@ services:
     environment:
        - PMA_ARBITRARY=1
        - PMA_HOST=db
-       - PMA_USER=aflo
-       - PMA_PASSWORD=aflo
+       - PMA_USER=Search
+       - PMA_PASSWORD=Search
     links:
        - db
     ports:

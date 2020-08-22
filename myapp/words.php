@@ -1,6 +1,6 @@
 <?php
 
-namespace Aflo;
+namespace Search;
 
 class Words
 {
