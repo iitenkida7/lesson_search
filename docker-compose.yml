@@ -44,3 +44,12 @@ services:
        - db
     ports:
        - 8080:80
+
+  schemaspy:
+    image: schemaspy/schemaspy  
+    volumes:
+      - ./docker/SchemaSpy/schemaspy.properties:/schemaspy.properties
+      - ./docker/SchemaSpy/drivers:/drivers
+      - ./erd:/output
+    links:
+       - db
