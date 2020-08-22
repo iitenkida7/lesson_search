@@ -19,7 +19,7 @@
       <input type="submit" value="登録">
     </form>
 
-    <form action="index.php" method="post">
+    <form action="/" method="post">
       <h2>検索</h2>
       <input type="text" name="keyword"
         value="<?php echo $_POST['keyword']?>"
