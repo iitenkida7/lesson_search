@@ -13,7 +13,8 @@
 
     <form action="/" method="post">
       <h2>登録</h2>
-      <p>スペース区切りで単語を入力</p>
+      <p>スペース区切りで単語を入力 </p>
+      <p>ex) 飛行機 aircraft ANA JAL BOEING AIRBUS</p>
       <input type="text" name="words" size="50" maxlength="1000">
       <input type="submit" value="登録">
     </form>
@@ -25,14 +26,18 @@
         size="50" maxlength="20">
       <input type="submit" value="検索">
     </form>
+    <div>
+      <h2>結果</h2>
 
-    <?php   if ($searchResults) { ?>
-    <h3>結果</h3>
-    <pre>
+      <?php
+       if ($searchResults) {
+           ?>
+      <pre>
   <?php
       echo implode(" ", $searchResults);
-  }
-?>
+       }
+  ?>
   </pre>
+    </div>
   </main>
 </body>
