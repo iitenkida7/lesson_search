@@ -10,9 +10,10 @@
   <input type="submit" value="送信">
 </form>
 
-<?php
 
-  if ($searchResults) {
-      echo implode(" ", $searchResults);
+<?php   if ($searchResults) { ?>
+<h3>結果</h3>
+<?php
+    echo implode(" ", $searchResults);
   }
 ?>
