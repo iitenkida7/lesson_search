@@ -15,6 +15,11 @@ class Words
         return ;
     }
 
+    public function search(string $keyword): array
+    {
+        return ['hoge', 'hage'];
+    }
+
     private function splitWords(string $words): array
     {
         return explode(' ', $words);
