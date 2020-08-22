@@ -10,7 +10,7 @@ class Words
     {
         $words = $this->splitWords($inputWords);
         if (count($words) > 0) {
-            $this->registWords($words);
+            $this->insertWords($words);
         }
         return ;
     }
@@ -20,16 +20,16 @@ class Words
         return explode(' ', $words);
     }
 
-    private function registWords(array $words): bool
+    private function insertWords(array $words): bool
     {
-        
-        $this->pdo->exec("INSERT INTO aggregations (id)");
-        
-        //$pdoWords = $this->pdo->prepare("INSERT INTO words (id, aggregations_id, words) VALUES(0, LAST_INSERT_ID(),?)");
-        $pdoWords = $this->pdo->prepare("INSERT INTO words (id, aggregations_id, words) VALUES(0, 1,?)");
         $this->pdo->beginTransaction();
+        $stn = $this->pdo->prepare("INSERT INTO aggregations (id) VALUE(NULL)");
+        $stn->execute([$word]);
+        $aggregationsId = $this->pdo->lastInsertId('id');
+        $stn = $this->pdo->prepare("INSERT INTO words (aggregations_id, word) VALUES(?,?)");
+
         foreach ($words as $word) {
-          $pdoWords->execute([$word]);
+            $stn->execute([$aggregationsId, $word]);
         }
         return $this->pdo->commit();
     }
