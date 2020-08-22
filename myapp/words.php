@@ -52,8 +52,8 @@ class Words
         $stn->execute([$keyword]);
 
         $words = [];
-        foreach ($stn->fetchAll(\PDO::FETCH_ASSOC) as $value ){
-            $words[] = $value['word'];            
+        foreach ($stn->fetchAll(\PDO::FETCH_ASSOC) as $value) {
+            $words[] = $value['word'];
         }
         return $words;
     }

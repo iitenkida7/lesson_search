@@ -1,11 +1,16 @@
-CREATE TABLE IF NOT EXISTS aggregations
-    (id int AUTO_INCREMENT NOT NULL PRIMARY KEY);
+CREATE TABLE
+IF NOT EXISTS aggregations
+(id int AUTO_INCREMENT NOT NULL PRIMARY KEY);
 
-CREATE TABLE IF NOT EXISTS words 
-    (id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE
+IF NOT EXISTS words
+(id INT AUTO_INCREMENT PRIMARY KEY,
      aggregations_id int NOT NULL,
-     word varchar(10) NOT NULL,
-     FOREIGN KEY aggregations_id (aggregations_id) REFERENCES aggregations (id));
+     word varchar
+(10) NOT NULL,
+     FOREIGN KEY aggregations_id
+(aggregations_id) REFERENCES aggregations
+(id));
 
 /*
 データが増えてきたらこれが使えるかも。
