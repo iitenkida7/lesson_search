@@ -27,6 +27,7 @@ class Words
 
     private function insertWords(array $words): bool
     {
+        // TODO エラーハンドリングやったほうがよい。
         $this->pdo->beginTransaction();
         $stn = $this->pdo->prepare("INSERT INTO aggregations (id) VALUE(NULL)");
         $stn->execute([$word]);
@@ -37,6 +38,7 @@ class Words
             $stn->execute([$aggregationsId, $word]);
         }
         return $this->pdo->commit();
+
     }
 
     private function searchWords(string $keyword): array
