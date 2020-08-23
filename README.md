@@ -23,14 +23,22 @@ make migrate
 make data-insert
 ```
 
-## Let's access!
-* http://localhost:8000/
+## Let's access!(実行)
 
-## Info
+* Webページ
+  - http://localhost:8000/
 
 * phpMyadmin
   - http://localhost:8080/
 
+
+
 ## ER図
 
 ![ER図](./erd/manual_erd.png)
+
+* CREATE TABLE の SQL は[こちら](https://github.com/iitenkida7/lesson_search/blob/master/docker/mysql/migrate.sql)
+
+* SchemaSpy による DBドキュメント（ER図）生成は `make erd` を実行
+  - ./erd/index.html が生成されるので開くと閲覧できる。
+
