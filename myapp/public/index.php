@@ -1,5 +1,7 @@
 <?php
 require_once(__DIR__ . '/../vendor/autoload.php');
+use Jenssegers\Blade\Blade;
+
 $words =  new Search\Words;
 
 if ($_POST['words']) {
@@ -8,6 +10,7 @@ if ($_POST['words']) {
 } elseif ($_POST['keyword']) {
     $searchResults = $words->search($_POST['keyword']);
 }
-
-// view
-require_once(__DIR__ . '/../view/index.php');
+echo (new Blade('../views', '../cache'))->make('index', [
+    'keyword'       => $_POST['keyword'],
+    'searchResults' => $searchResults > 0 ? implode(" ", $searchResults) : "",
+])->render();

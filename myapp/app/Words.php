@@ -6,7 +6,7 @@ class Words
 {
     use Database;
 
-    public function regist(string $inputWords)
+    public function regist(string $inputWords): array
     {
         $words = $this->splitWords($inputWords);
         if (count($words) > 0) {

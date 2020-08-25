@@ -22,22 +22,15 @@
     <form action="/" method="post">
       <h2>検索</h2>
       <input type="text" name="keyword"
-        value="<?php echo $_POST['keyword']?>"
+        value="{{ $keyword }}"
         size="50" maxlength="20">
       <input type="submit" value="検索">
     </form>
     <div>
       <h2>結果</h2>
-
-      <?php
-       if ($searchResults) {
-           ?>
       <pre>
-  <?php
-      echo implode(" ", $searchResults);
-       }
-  ?>
-  </pre>
+      {{ $searchResults }}
+      </pre>
     </div>
   </main>
 </body>

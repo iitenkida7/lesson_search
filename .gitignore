@@ -1,6 +1,8 @@
+!.gitkeep
 docker/mysql/data/
 myapp/vendor/
+myapp/cache/
 .DS_Store
 erd/*
-!erd/.gitkeep
+
 !erd/manual_erd.png

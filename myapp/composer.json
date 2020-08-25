@@ -1,7 +1,10 @@
 {
     "autoload": {
         "psr-4": {
-            "Search\\" : "."
+            "Search\\" : "app/"
         }
+    },
+    "require": {
+        "jenssegers/blade": "^1.3"
     }
 }
