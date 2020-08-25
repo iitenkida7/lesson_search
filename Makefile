@@ -4,9 +4,9 @@ drop:
 	docker-compose exec db sh -c 'export MYSQL_PWD=$${MYSQL_PASSWORD} ; mysql -u$${MYSQL_USER} $${MYSQL_DATABASE} -e "drop table words"'
 	docker-compose exec db sh -c 'export MYSQL_PWD=$${MYSQL_PASSWORD} ; mysql -u$${MYSQL_USER} $${MYSQL_DATABASE} -e "drop table aggregations"'
 composer-dumpautoload:
-	docker-compose run --rm composer dumpautoload
+	docker-compose run --rm composer dump-autoload -o
 composer-install:
-	docker-compose run --rm composer install
+	docker-compose run --rm composer install -o
 data-insert:
 	curl -X POST -d 'words=お父さん パパ おとうさん おやじ とうさん 父 父さん 父親 父ちゃん とうちゃん dady papa dad father' http://localhost:8000  -o /dev/null -w '%{http_code}\n' -s
 	curl -X POST -d 'words=女性 女 ウーマン おんな 女の人 woman female' http://localhost:8000  -o /dev/null -w '%{http_code}\n' -s
